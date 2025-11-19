@@ -131,7 +131,7 @@ btn.addEventListener("click", function () {
 // getCountryData("dldldldl");
 // getCountryData("germany");
 */
-
+/*
 console.log("Test start"); // 1, 'cause synchronous
 setTimeout(() => console.log("0 sec timer"), 0); // 5, runs after async
 Promise.resolve("Resolved promise 1").then((res) => console.log(res)); // 3, 'cause asynchronous
@@ -141,3 +141,38 @@ Promise.resolve("Resolved promise 2").then((res) => {
   console.log(res);
 }); // 4, 'cause asynchronous
 console.log("Test end"); // 2, 'cause synchronous
+*/
+
+// BUILDING A SIMPLE PROMISE
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log("Lottery draw is happening 🔮");
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve("You win 💰");
+    } else {
+      reject(new Error("You lost your money 💩"));
+    }
+  }, 2000);
+});
+
+lotteryPromise
+  .then((res) => console.log(res))
+  .catch((err) => console.error(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log("I've waited for 1 second");
+    return wait(2);
+  })
+  .then(() => console.log("I've waited for 2 seconds"));
+
+Promise.resolve("abc").then((x) => console.log(x));
+Promise.reject(new Error("Problem!")).catch((x) => console.error(x));
