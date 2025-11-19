@@ -179,7 +179,7 @@ Promise.reject(new Error("Problem!")).catch((x) => console.error(x));
 */
 
 // Promisifying the geolocation API
-
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
@@ -224,3 +224,4 @@ const whereAmI = function () {
 };
 
 btn.addEventListener("click", whereAmI);
+*/
