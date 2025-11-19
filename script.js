@@ -31,12 +31,12 @@ const renderCountry = function (data, className = "") {
   </article>
   `;
   countriesContainer.insertAdjacentHTML("beforeend", html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText("beforeend", msg);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
 
 /*
@@ -89,6 +89,7 @@ getCountryAndNeighbour("usa");
 //     });
 // };
 
+/*
 const getJSON = function (url, errorMsg = "Something went wrong") {
   return fetch(url).then((response) => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
@@ -129,3 +130,14 @@ btn.addEventListener("click", function () {
 
 // getCountryData("dldldldl");
 // getCountryData("germany");
+*/
+
+console.log("Test start"); // 1, 'cause synchronous
+setTimeout(() => console.log("0 sec timer"), 0); // 5, runs after async
+Promise.resolve("Resolved promise 1").then((res) => console.log(res)); // 3, 'cause asynchronous
+
+Promise.resolve("Resolved promise 2").then((res) => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+}); // 4, 'cause asynchronous
+console.log("Test end"); // 2, 'cause synchronous
