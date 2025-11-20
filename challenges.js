@@ -32,7 +32,7 @@ whereAmI(-33.933, 18.474);
 */
 
 // challenge 2
-
+/*
 const imgsContainer = document.querySelector(".images");
 
 const wait = function (seconds) {
@@ -83,3 +83,4 @@ createImage("./img/img-1.jpg")
     curImg.style.display = "none";
   })
   .catch((err) => console.error(err));
+*/

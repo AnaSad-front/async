@@ -225,3 +225,33 @@ const whereAmI = function () {
 
 btn.addEventListener("click", whereAmI);
 */
+
+// CONSUMING PROMISES WITH ASYNC AWAIT
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function () {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Country data
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${dataGeo.countryName}`
+  );
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+whereAmI();
