@@ -313,7 +313,7 @@ const get3Countries = async function (c1, c2, c3) {
 };
 get3Countries("portugal", "canada", "tanzania");
 */
-
+/*
 // Promise.race
 (async function () {
   const res = await Promise.race([
@@ -353,3 +353,4 @@ Promise.any([
 ])
   .then((res) => console.log(res))
   .catch((err) => console.error(err));
+*/
